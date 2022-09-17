@@ -8,7 +8,7 @@ subtitle: '知其然，知其所以然'
 description: '世界很大，我想去纪录我所看见的一切'
 keywords:
 author: zgzfine
-language: en
+language: zh-CN
 timezone: 'Asia/Shanghai'
 
 # URL
@@ -97,7 +97,7 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: next
+theme: hexo-theme-next-7.8.0
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
@@ -105,3 +105,9 @@ deploy:
   type: git
   repo: git@github.com:zgzfine/zgzfine.github.io.git
   branch: master
+
+search:
+  path: search.xml
+  field: post
+  format: html
+  limit: 10000
