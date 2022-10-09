@@ -45,7 +45,7 @@ categories:
 
 ## 程序
 
-~~~
+```
 /**
  * 由于题目要求 O(log n),所以要考虑到 二分法，递归等
  *
@@ -75,4 +75,4 @@ public int searchInsert(int[] nums, int target) {
     return r + 1;
 }
 
-~~~
+```
