@@ -1,7 +1,10 @@
 ---
 title: LeetCode 367. 有效的完全平方数
 date: 2022-10-06 16:32:56
-tags:
+tags: LeetCode
+categories:
+- LeetCode
+- 数组
 ---
 
 > 给定一个 正整数 num ，编写一个函数，如果 num 是一个完全平方数，则返回 true ，否则返回 false 。   

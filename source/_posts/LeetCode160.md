@@ -1,7 +1,10 @@
 ---
 title: LeetCode 160. 相交链表
 date: 2022-10-04 00:26:42
-tags:
+tags: LeetCode
+categories:
+- LeetCode
+- 链表
 ---
 
 > 给你两个单链表的头节点headA 和 headB ，请你找出并返回两个单链表相交的起始节点。如果两个链表不存在相交节点，返回 null 。   

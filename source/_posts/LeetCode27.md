@@ -1,7 +1,10 @@
 ---
 title: LeetCode 27. 移除元素
 date: 2022-10-03 00:51:08
-tags:
+tags: LeetCode
+categories:
+- LeetCode
+- 数组
 ---
 
 > 给你一个数组 nums和一个值 val，你需要 原地 移除所有数值等于val的元素，并返回移除后数组的新长度。  

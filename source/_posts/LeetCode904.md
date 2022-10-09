@@ -1,7 +1,10 @@
 ---
 title: LeetCode 904. 水果成篮
 date: 2022-10-06 16:36:14
-tags:
+tags: LeetCode
+categories:
+- LeetCode
+- 数组
 ---
 
 > 你正在探访一家农场，农场从左到右种植了一排果树。这些树用一个整数数组 fruits 表示，其中 fruits[i] 是第 i 棵树上的水果 种类 。     

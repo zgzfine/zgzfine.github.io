@@ -1,7 +1,10 @@
 ---
 title: LeetCode 34. 在排序数组中查找元素的第一个和最后一个位置
 date: 2022-10-03 00:54:54
-tags:
+tags: LeetCode
+categories:
+- LeetCode
+- 数组
 ---
 
 

@@ -1,7 +1,10 @@
 ---
 title: LeetCode 69. x 的平方根
 date: 2022-10-04 00:19:06
-tags:
+tags: LeetCode
+categories:
+- LeetCode
+- 排序
 ---
 
 > 给你一个非负整数 x ，计算并返回x的 算术平方根 。  

@@ -1,7 +1,10 @@
 ---
 title: LeetCode 209. 长度最小的子数组
 date: 2022-10-06 16:28:29
-tags:
+tags: LeetCode
+categories:
+- LeetCode
+- 数组
 ---
 
 > 给定一个含有n个正整数的数组和一个正整数 target 。  

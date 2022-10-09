@@ -1,7 +1,10 @@
 ---
 title: LeetCode 977. 有序数组的平方
 date: 2022-10-06 16:42:59
-tags:
+tags: LeetCode
+categories:
+- LeetCode
+- 数组
 ---
 
 
