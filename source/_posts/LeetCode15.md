@@ -48,6 +48,7 @@ nums[0] + nums[3] + nums[4] = (-1) + 2 + (-1) = 0 。
  * 2、不可以包含重复的三元组
  * 假如使用暴力破解那么，这里会有 O(N^3)的时间复杂度
  * 所以考虑减低复杂度，使用 排序+双指针的方法
+ * 由于排序的时间复杂度是 O(N*logN),双指针O(N^2) 所有最终时间复杂度O(N*logN)+O(N^2)=O(N^2)
  */
 public List<List<Integer>> threeSum(int[] nums) {
     List<List<Integer>> result = new ArrayList<>();
