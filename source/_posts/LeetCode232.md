@@ -1,7 +1,7 @@
 ---
 title: LeetCode 232. 用栈实现队列
 date: 2022-10-14 11:11:01
-tags:
+tags: 栈
 categories:
 - LeetCode
 - 栈与队列
