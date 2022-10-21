@@ -3,6 +3,8 @@ title: LeetCode 383. 赎金信
 date: 2022-10-11 17:07:54
 tags:
 categories:
+- LeetCode
+- 字符串
 ---
 
 > 给你两个字符串：ransomNote 和 magazine ，判断 ransomNote 能不能由 magazine 里面的字符构成。  
