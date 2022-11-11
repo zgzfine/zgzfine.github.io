@@ -68,7 +68,7 @@ public class LeetCode1005 {
         if (k % 2 == 1) {//如果k大于0，并且k是奇数，那么需要将数组最后一个数值翻转一次
             nums[nums.length - 1] = -nums[nums.length - 1];
         }
-        return Arrays.stream(nums).sum();//数值相加
+        return Arrays.stream(nums).sum();//数值相加,这里也可以在上面for循环的时候开始sum，不过这不是这题的重点，也就不过多探讨
     }
 }
 ```
