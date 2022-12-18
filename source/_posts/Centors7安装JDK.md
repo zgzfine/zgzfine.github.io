@@ -21,6 +21,8 @@ categories:
 > 如果存在就批量卸载
 > rpm -qa | grep java | xargs rpm -e --nodeps
 
+<!--more-->
+
 2、使用yum安装1.8版本openJdk
 > [root@localhost ~]# yum install java-1.8.0-openjdk* -y
 
