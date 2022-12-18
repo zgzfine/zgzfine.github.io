@@ -49,3 +49,16 @@ rlogin、rsh都是极为不安全的，并且会使用明文传送密码。OpenS
 8、通过客户端远程访问
 ssh username@hostname(hostIP)
 如：ssh zgzfine@192.168.83.128
+
+9、如果使用虚拟机的、每次链接ip地址都变更那么就十分郁闷，所有有必要设置一下静态ip
+
+9.1 先查看目前虚拟机的ip信息
+![](../images/0011/20221218121859.png)
+
+9.2 终端命令行中输入以下命令查看网关
+> route -n 或 ip route 或 netstat -rn
+![](../images/0011/20221218122253.png)
+
+9.3 修改静态ip地址
+> vi /etc/sysconfig/network-scripts/ifcfg-ens33
+![](../images/0011/20221218122446.png)
