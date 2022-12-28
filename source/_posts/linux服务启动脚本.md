@@ -75,6 +75,8 @@ esac
 ```
 编写完shell脚本，可以使用 rz 命令传送到服务器（安装命令：sudo yum install lrzsz）
 记得需要赋予系统的执行权限 chmod 777 xxx.sh (r、w、x、-表示4、2、1、0)
+rocketmq需要优先创建topic
+> $ sh bin/mqadmin updatetopic -n localhost:9876 -t TestTopic
 
 2、编写服务service脚本
 ```
