@@ -187,6 +187,211 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zgzfine.github.io/2023/01/03/Java%E7%9A%847%E7%A7%8D%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/18731299.png">
+      <meta itemprop="name" content="zgzfine">
+      <meta itemprop="description" content="世界很大，我想去纪录我所看见的一切">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="随意随想">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/01/03/Java%E7%9A%847%E7%A7%8D%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8/" class="post-title-link" itemprop="url">Java的7种垃圾收集器</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-01-03 10:39:03 / 修改时间：10:45:10" itemprop="dateCreated datePublished" datetime="2023-01-03T10:39:03+08:00">2023-01-03</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/JVAV/" itemprop="url" rel="index"><span itemprop="name">JVAV</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>用 C 或 C++ 这样的编程语言写一个应用时，需要编写代码来销毁内存中不再需要的对象。当应用程序扩展得越来越复杂时，未使用对象被忽略释放的可能性就越大。这会导致内存泄露，最终内存耗尽，在某个时刻将没有更多的内存可以分配。结果就是应用程序运行失败并出现 OutOfMemoryError 错误。但在 Java 中， 垃圾收集器Garbage Collection （GC）会在程序执行过程中自动运行，减轻了手动分配内存和可能的内存泄漏的任务。<br>垃圾收集器并不只有一种，Java 虚拟机（JVM）有七种不同的垃圾收集器，了解每种垃圾收集器的目的和优点是很有用的。</p>
+<p>JDK1.8之前的堆内存示意图：<br><img src="/../images/0014/20190107162107114.png"></p>
+<p>JDK7&#x2F;8后，HotSpot虚拟机所有收集器及组合（连线），如下图：<br><img src="/../images/0014/20190107162203445.png"></p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2023/01/03/Java%E7%9A%847%E7%A7%8D%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zgzfine.github.io/2022/12/20/zookeeper%E5%AE%89%E8%A3%85%E4%B8%8E%E5%90%AF%E5%8A%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/18731299.png">
+      <meta itemprop="name" content="zgzfine">
+      <meta itemprop="description" content="世界很大，我想去纪录我所看见的一切">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="随意随想">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/12/20/zookeeper%E5%AE%89%E8%A3%85%E4%B8%8E%E5%90%AF%E5%8A%A8/" class="post-title-link" itemprop="url">zookeeper安装与启动</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-12-20 15:24:38" itemprop="dateCreated datePublished" datetime="2022-12-20T15:24:38+08:00">2022-12-20</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-12-29 15:34:27" itemprop="dateModified" datetime="2022-12-29T15:34:27+08:00">2022-12-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>1、zookeeper的下载<br>官网 <a target="_blank" rel="noopener" href="https://zookeeper.apache.org/releases.html">下载地址</a><br><img src="/../images/0012/20221220152700.png"></p>
+<blockquote>
+<p> wget –no-check-certificate <a target="_blank" rel="noopener" href="https://dlcdn.apache.org/zookeeper/zookeeper-3.6.3/apache-zookeeper-3.6.3-bin.tar.gz">https://dlcdn.apache.org/zookeeper/zookeeper-3.6.3/apache-zookeeper-3.6.3-bin.tar.gz</a></p>
+</blockquote>
+<p>2、解压压缩包</p>
+<blockquote>
+<p>tar -zxvf apache-zookeeper-3.6.3-bin.tar.gz -C &#x2F;usr&#x2F;local&#x2F;</p>
+</blockquote>
+<p>3、进入zookeeper的安装目录下</p>
+<ul>
+<li>创建data目录，存放我们的数据，使用以下命令<blockquote>
+<p>cd &#x2F;usr&#x2F;local&#x2F;apache-zookeeper-3.6.3-bin<br>mkdir data</p>
+</blockquote>
+</li>
+</ul>
+<p>4、进入conf目录，修改文件名称</p>
+<ul>
+<li>把zoo_sample.cfg 改名为zoo.cfg。可以复制一份，重命名为zoo.cfg（默认配置名称）<blockquote>
+<p>#进入conf目录<br>cd conf&#x2F;<br>#复制一份，名为zoo.cfg<br>cp zoo_sample.cfg zoo.cfg</p>
+</blockquote>
+</li>
+</ul>
+<p>5、修改zoo.cfg配置文件</p>
+<ul>
+<li>将dataDir修改为我们自己创建的data目录<br><img src="/../images/0012/20221220153614.png"></li>
+</ul>
+<p>6、启动测试</p>
+<ul>
+<li><p>进入zookeeper目录下的bin目录,使用命令启动zkServer.sh,后缀为sh的为linux启动，为cmd的是Windows下启动</p>
+<blockquote>
+<p>.&#x2F;zkServer.sh start</p>
+</blockquote>
+</li>
+<li><p>启动后查看服务的状态，显示如下信息则启动成功</p>
+<blockquote>
+<p>.&#x2F;zkServer.sh status<br><img src="/../images/0012/20221220153906.png"></p>
+</blockquote>
+</li>
+<li><p>停止服务</p>
+<blockquote>
+<p>.&#x2F;zkServer.sh stop<br><img src="/../images/0012/20221220154048.png"></p>
+</blockquote>
+</li>
+</ul>
+<p>7、zkui的安装<br>7.1 下载 <a target="_blank" rel="noopener" href="https://github.com/DeemOpen/zkui">zkui</a></p>
+<p>7.2 编译</p>
+<blockquote>
+<p>mvn clean package  </p>
+</blockquote>
+<p>7.3 上传到服务器</p>
+<blockquote>
+<p>rz<br><img src="/../images/0013/20221229152936.png"></p>
+</blockquote>
+<p>7.4 修改配置<br><img src="/../images/0013/20221229153240.png"></p>
+<p>7.5 上传启动脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env bash</span><br><span class="line"></span><br><span class="line">PIDFILE=~/zkui.pid</span><br><span class="line">ZKUIBINDIR=$(cd `dirname $0`; pwd)</span><br><span class="line">ZKUICLASSNAME=&quot;target/zkui-2.0-SNAPSHOT-jar-with-dependencies.jar&quot;</span><br><span class="line">ZKUI_DAEMON_OUT=$ZKUIBINDIR/zkui.out</span><br><span class="line"></span><br><span class="line">start()&#123;</span><br><span class="line">    echo  &quot;Starting zkui ... $ZKUIBINDIR&quot;</span><br><span class="line">    if [ -f &quot;$PIDFILE&quot; ]; then</span><br><span class="line">        if kill -0 `cat &quot;$PIDFILE&quot;` &gt; /dev/null 2&gt;&amp;1; then</span><br><span class="line">            echo zkui already running as process `cat &quot;$PIDFILE&quot;`. </span><br><span class="line">            exit 0</span><br><span class="line">        fi</span><br><span class="line">    fi</span><br><span class="line">    cd $ZKUIBINDIR</span><br><span class="line">    cp config.cfg target</span><br><span class="line">    nohup java -jar &quot;$ZKUIBINDIR/$ZKUICLASSNAME&quot; &gt; &quot;$ZKUI_DAEMON_OUT&quot; 2&gt;&amp;1 &lt; /dev/null &amp;</span><br><span class="line">    if [ $? -eq 0 ];</span><br><span class="line">    then</span><br><span class="line">        echo $!&gt;$PIDFILE</span><br><span class="line">        if [ $? -eq 0 ];</span><br><span class="line">        then</span><br><span class="line">            sleep 1</span><br><span class="line">            echo STARTED</span><br><span class="line">        else</span><br><span class="line">            echo FAILED TO WRITE PID</span><br><span class="line">            exit 1</span><br><span class="line">        fi</span><br><span class="line">    else</span><br><span class="line">        echo SERVER DID NOT START</span><br><span class="line">        exit 1</span><br><span class="line">    fi</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">stop()&#123;</span><br><span class="line">    echo -n &quot;Stopping zkui ... &quot;</span><br><span class="line">    if [ ! -f &quot;$PIDFILE&quot; ]</span><br><span class="line">    then</span><br><span class="line">        echo &quot;no zkui to stop (could not find file $PIDFILE)&quot;</span><br><span class="line">    else</span><br><span class="line">        kill -9 $(cat &quot;$PIDFILE&quot;)</span><br><span class="line">        rm &quot;$PIDFILE&quot;</span><br><span class="line">        echo STOPPED</span><br><span class="line">    fi</span><br><span class="line">    exit 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">case &quot;$1&quot; in</span><br><span class="line">start)</span><br><span class="line">    start</span><br><span class="line">    ;;</span><br><span class="line">stop)</span><br><span class="line">    stop</span><br><span class="line">    ;;</span><br><span class="line">restart)</span><br><span class="line">    shift</span><br><span class="line">    &quot;$0&quot; stop</span><br><span class="line">    sleep 3</span><br><span class="line">    &quot;$0&quot; start</span><br><span class="line">    ;;</span><br><span class="line">*)</span><br><span class="line">    echo &quot;Usage: $0 &#123;start|stop|restart&#125;&quot; &gt;&amp;2</span><br><span class="line">esac</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://zgzfine.github.io/2022/12/16/Redis%E7%9A%84%E5%AE%89%E8%A3%85/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -258,189 +463,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zgzfine.github.io/2022/12/15/linux%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/18731299.png">
-      <meta itemprop="name" content="zgzfine">
-      <meta itemprop="description" content="世界很大，我想去纪录我所看见的一切">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="随意随想">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/12/15/linux%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/" class="post-title-link" itemprop="url">linux服务启动脚本</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-12-15 15:48:00 / 修改时间：16:07:32" itemprop="dateCreated datePublished" datetime="2022-12-15T15:48:00+08:00">2022-12-15</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在linux系统部署服务(如java进程)，难免会使用shell脚本，下面就以centos7、rocketmq为例子，简单介绍。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2022/12/15/linux%E6%9C%8D%E5%8A%A1%E5%90%AF%E5%8A%A8%E8%84%9A%E6%9C%AC/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zgzfine.github.io/2022/12/13/Centors7%E5%AE%89%E8%A3%85JDK/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/18731299.png">
-      <meta itemprop="name" content="zgzfine">
-      <meta itemprop="description" content="世界很大，我想去纪录我所看见的一切">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="随意随想">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/12/13/Centors7%E5%AE%89%E8%A3%85JDK/" class="post-title-link" itemprop="url">Centors7安装JDK</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2022-12-13 16:52:46 / 修改时间：17:06:35" itemprop="dateCreated datePublished" datetime="2022-12-13T16:52:46+08:00">2022-12-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>1、查看当前系统是否已经安装JDK</p>
-<blockquote>
-<p>查看系统版本<br>[root@localhost ~]# cat &#x2F;etc&#x2F;redhat-release<br>CentOS Linux release 7.4.1708 (Core)</p>
-<p>jdk的安装情况</p>
-<ul>
-<li>rpm -qa |grep java</li>
-<li>rpm -qa |grep jdk</li>
-<li>rpm -qa |grep gcj</li>
-</ul>
-<p>如果存在就批量卸载<br>rpm -qa | grep java | xargs rpm -e –nodeps</p>
-</blockquote>
-<p>2、使用yum安装1.8版本openJdk</p>
-<blockquote>
-<p>[root@localhost ~]# yum install java-1.8.0-openjdk* -y</p>
-</blockquote>
-<p>3、安装情况</p>
-<blockquote>
-<p>[root@zgzfine etc]# java -version<br>openjdk version “1.8.0_352”<br>OpenJDK Runtime Environment (build 1.8.0_352-b08)<br>OpenJDK 64-Bit Server VM (build 25.352-b08, mixed mode)  </p>
-</blockquote>
-<p><img src="/../images/0009/20221213165943.png"></p>
-<p>4、添加环境变量</p>
-<ul>
-<li><p>查看jdk的安装地址<br><img src="/../images/0009/20221213170130.png"></p>
-</li>
-<li><p>通过命令1输出内容，查看jdk的安装地址<br><img src="/../images/0009/20221213170219.png"></p>
-</li>
-<li><p>通过命令2输出内容，拿到jdk的实际地址<br><img src="/../images/0009/20221213170316.png"></p>
-</li>
-<li><p>进入配置文件&#x2F;etc&#x2F;profile<br><img src="/../images/0009/20221213170423.png"></p>
-</li>
-<li><p>将环境变量编译生效</p>
-<blockquote>
-<p>. &#x2F;etc&#x2F;profile</p>
-</blockquote>
-</li>
-</ul>
-<p>5、结果检查<br><img src="/../images/0009/20221213170620.png"></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/33/">33</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/34/">34</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -508,14 +534,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">99</span>
+          <span class="site-state-item-count">101</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-count">17</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -557,7 +583,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2022</span>
+  <span itemprop="copyrightYear">2023</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>

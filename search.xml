@@ -291,6 +291,8 @@
 </ul>
 <p>如果存在就批量卸载<br>rpm -qa | grep java | xargs rpm -e –nodeps</p>
 </blockquote>
+<span id="more"></span>
+
 <p>2、使用yum安装1.8版本openJdk</p>
 <blockquote>
 <p>[root@localhost ~]# yum install java-1.8.0-openjdk* -y</p>
@@ -2611,7 +2613,10 @@
 
 <p>1、编写shell脚本</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line">#</span><br><span class="line"># rocketmq - this script starts and stops the rocketmq daemon</span><br><span class="line">#</span><br><span class="line"># chkconfig: - 85 15</span><br><span class="line"># 假如java环境变量</span><br><span class="line"># export JAVA_HOME=&#x27;这里写上自己安装jdk的目录路径 例如：/usr/lib/jvm/jre-1.8.0&#x27;</span><br><span class="line"># export PATH=$JAVA_HOME/bin:$PATH</span><br><span class="line"></span><br><span class="line">ROCKETMQ_HOME=/usr/local/rocketmq-all-4.8.0-bin-release</span><br><span class="line">ROCKETMQ_BIN=$&#123;ROCKETMQ_HOME&#125;/bin</span><br><span class="line">ADDR=$(hostname -i):9876</span><br><span class="line"># 这里写上自己服务器的ip地址以及端口号 例如：192.168.0.1:9876</span><br><span class="line">BROKER_IP=localhost:9876</span><br><span class="line">LOG_DIR=$&#123;ROCKETMQ_HOME&#125;/logs</span><br><span class="line">NAMESERVER_LOG=$&#123;LOG_DIR&#125;/namesrv.log</span><br><span class="line">BROKER_LOG=$&#123;LOG_DIR&#125;/broker.log</span><br><span class="line"></span><br><span class="line">start() &#123;</span><br><span class="line">  if [ ! -d $&#123;LOG_DIR&#125; ]; then</span><br><span class="line">    mkdir $&#123;LOG_DIR&#125;</span><br><span class="line">  fi</span><br><span class="line">  cd $&#123;ROCKETMQ_HOME&#125;</span><br><span class="line">  nohup sh bin/mqnamesrv &gt;$&#123;NAMESERVER_LOG&#125; 2&gt;&amp;1 &amp;</span><br><span class="line">  echo -n &quot;The Name Server boot success...&quot;</span><br><span class="line">  nohup sh bin/mqbroker -n $&#123;BROKER_IP&#125; &gt;$&#123;BROKER_LOG&#125; 2&gt;&amp;1 &amp;</span><br><span class="line">  echo -n &quot;The broker[%s, $&#123;BROKER_IP&#125;] boot success...&quot;</span><br><span class="line">&#125;</span><br><span class="line">stop() &#123;</span><br><span class="line">  cd $&#123;ROCKETMQ_HOME&#125;</span><br><span class="line">  echo -n &quot;The Name Server boot is stopping...&quot;</span><br><span class="line">  sh bin/mqshutdown broker</span><br><span class="line">  sleep 1</span><br><span class="line">  echo -n &quot;The broker[%s, $&#123;BROKER_IP&#125;] boot is stopping...&quot;</span><br><span class="line">  sh bin/mqshutdown namesrv</span><br><span class="line">&#125;</span><br><span class="line">restart() &#123;</span><br><span class="line">  stop</span><br><span class="line">  sleep 5</span><br><span class="line">  start</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">case &quot;$1&quot; in</span><br><span class="line">start)</span><br><span class="line">  start</span><br><span class="line">  ;;</span><br><span class="line">stop)</span><br><span class="line">  stop</span><br><span class="line">  ;;</span><br><span class="line">restart)</span><br><span class="line">  restart</span><br><span class="line">  ;;</span><br><span class="line">*)</span><br><span class="line">  echo $&quot;Usage: $0 &#123;start|stop|restart&#125;&quot;</span><br><span class="line">  exit 2</span><br><span class="line">  ;;</span><br><span class="line">esac</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>编写完shell脚本，可以使用 rz 命令传送到服务器（安装命令：sudo yum install lrzsz）<br>记得需要赋予系统的执行权限 chmod 777 xxx.sh (r、w、x、-表示4、2、1、0)</p>
+<p>编写完shell脚本，可以使用 rz 命令传送到服务器（安装命令：sudo yum install lrzsz）<br>记得需要赋予系统的执行权限 chmod 777 xxx.sh (r、w、x、-表示4、2、1、0)<br>rocketmq需要优先创建topic</p>
+<blockquote>
+<p>$ sh bin&#x2F;mqadmin updatetopic -n localhost:9876 -t TestTopic</p>
+</blockquote>
 <p>2、编写服务service脚本</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=rocketmq shell script</span><br><span class="line">After=network.target</span><br><span class="line"> </span><br><span class="line">[Service]</span><br><span class="line">Type=forking</span><br><span class="line">ExecStart=/usr/local/rocketmq-all-4.8.0-bin-release/rocketmq.sh start</span><br><span class="line">ExecStop=/usr/local/rocketmq-all-4.8.0-bin-release/rocketmq.sh stop</span><br><span class="line">ExecReload=/usr/local/rocketmq-all-4.8.0-bin-release/rocketmq.sh restart</span><br><span class="line">Restart=always</span><br><span class="line">RestartSec=5</span><br><span class="line"> </span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
 
@@ -2774,5 +2779,97 @@
 </ul>
 <h2 id="7-2-动图演示"><a href="#7-2-动图演示" class="headerlink" title="7.2 动图演示"></a>7.2 动图演示</h2><p><img src="/../images/0006/heapSort.gif"></p>
 <h2 id="7-3-实现"><a href="#7-3-实现" class="headerlink" title="7.3 实现"></a>7.3 实现</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">/**</span><br><span class="line"> * 堆排序</span><br><span class="line"> */</span><br><span class="line">public class HeapSort &#123;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 1、第一步将数组转成一个大顶堆</span><br><span class="line">     * 2、交换数组首尾元素</span><br><span class="line">     * 3、调整除了尾元素外的元素成为一个新的大顶堆</span><br><span class="line">     * 4、重复2、3步骤</span><br><span class="line">     */</span><br><span class="line">    public static void heapSort(int[] arr) &#123;</span><br><span class="line">        //1、第一步将数组转成一个大顶堆（这一步有点像冒泡排序 ）</span><br><span class="line">        for (int i = arr.length / 2 - 1; i &gt;= 0; i--) &#123;//注意这里需要等于0，头结点也需要一次调整</span><br><span class="line">            adjustHeap(arr, i, arr.length);</span><br><span class="line">        &#125;</span><br><span class="line">        //4、加入for循环继续遍历</span><br><span class="line">        for (int n = arr.length - 1; n &gt; 0; n--) &#123;</span><br><span class="line">            //2、首尾交换</span><br><span class="line">            int temp = arr[0];</span><br><span class="line">            arr[0] = arr[n];</span><br><span class="line">            arr[n] = temp;</span><br><span class="line">            //3、此时的数组是一个除了首节点之外的大顶堆，所以只需要调整首节点</span><br><span class="line">            adjustHeap(arr, 0, n);//数组最后一个元素排除掉</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    /**</span><br><span class="line">     * 构建以index为头结点的大顶堆</span><br><span class="line">     * 原理就是比较左右孩子节点，那个大就交换，并重新构建</span><br><span class="line">     *</span><br><span class="line">     * @param arr 原数组</span><br><span class="line">     * @param h   当前节点,当前头结点</span><br><span class="line">     * @param n   原数组长度(注意是长度，所以是右开间)</span><br><span class="line">     */</span><br><span class="line">    private static void adjustHeap(int[] arr, int h, int n) &#123;</span><br><span class="line">        //index 的左节点=index*2+1，右节点=左节点+1</span><br><span class="line">        int temp = arr[h];</span><br><span class="line">        for (int j = h * 2 + 1; j &lt; n; j = j * 2 + 1) &#123;</span><br><span class="line">            if (j + 1 &lt; n &amp;&amp; arr[j] &lt; arr[j + 1]) &#123;//如果左孩子小于右孩子，那么就交换头、右孩子</span><br><span class="line">                j = j + 1;//右孩子节点赋给当前节点</span><br><span class="line">            &#125;</span><br><span class="line">            if (arr[j] &gt; temp) &#123;</span><br><span class="line">                arr[h] = arr[j];</span><br><span class="line">                h = j;//!!!index 指向j，继续扮演下一轮节点比较</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                break;//头节点大于左右孩子节点，那么就停止for循环</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        //最后必须要将temp赋值给arr[h],假如程序都没有进入for循环，这里的交换也不会有问题</span><br><span class="line">        arr[h] = temp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>Java的7种垃圾收集器</title>
+    <url>/2023/01/03/Java%E7%9A%847%E7%A7%8D%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8/</url>
+    <content><![CDATA[<p>用 C 或 C++ 这样的编程语言写一个应用时，需要编写代码来销毁内存中不再需要的对象。当应用程序扩展得越来越复杂时，未使用对象被忽略释放的可能性就越大。这会导致内存泄露，最终内存耗尽，在某个时刻将没有更多的内存可以分配。结果就是应用程序运行失败并出现 OutOfMemoryError 错误。但在 Java 中， 垃圾收集器Garbage Collection （GC）会在程序执行过程中自动运行，减轻了手动分配内存和可能的内存泄漏的任务。<br>垃圾收集器并不只有一种，Java 虚拟机（JVM）有七种不同的垃圾收集器，了解每种垃圾收集器的目的和优点是很有用的。</p>
+<p>JDK1.8之前的堆内存示意图：<br><img src="/../images/0014/20190107162107114.png"></p>
+<p>JDK7&#x2F;8后，HotSpot虚拟机所有收集器及组合（连线），如下图：<br><img src="/../images/0014/20190107162203445.png"></p>
+<span id="more"></span>
+<p>1、Serial 收集器<br><img src="/../images/0014/4634286a92dc41088eb90a8f8a492abb.png"></p>
+<p>垃圾收集器的原始实现，使用单线程。当垃圾收集器运行时，会停止应用程序（通常称为“stop the world”事件）。适用于能够承受短暂停顿的应用程序。该垃圾收集器占用内存空间比较小，因此这是嵌入式应用程序的首选垃圾收集器类型。在运行时使用以下命令启用该垃圾收集器：</p>
+<p>$ java -XX:+UseSerialGC<br>2、Parallel 收集器<br><img src="/../images/0014/8a189c3810dfc822496e3e06fbc03fd0.png"></p>
+<p>像 Serial 收集器一样，Parallel 收集器也使用“stop the world”方法。这意味着，当垃圾收集器运行时，应用程序线程会停止。但是不同的是，Parallel 收集器运行时有多个线程执行垃圾收集操作。这种类型的垃圾收集器适用于在多线程和多处理器环境中运行中到大型数据集的应用程序。</p>
+<p>这是 JVM 中的默认垃圾收集器，也被称为 吞吐量收集器 。使用该垃圾收集器时可以通过使用各种合适的 JVM 参数进行调优，例如吞吐量、暂停时间、线程数和内存占用。如下：</p>
+<p>-XX:ParallelGCThreads&#x3D;<N><br>-XX:MaxGCPauseMillis&#x3D;<N><br>-XX:GCTimeRatio&#x3D;<N><br>-Xmx<N><br>Parallel 收集器可以使用该命令显式启用： java -XX:+UseParallelGC 。使用这个命令，指定在新生代中通过多个线程进行垃圾回收，而老年代中的垃圾收集和内存压缩仍使用单个线程完成的。</p>
+<p>还有一个版本的的 Parallel 收集器叫做 “Parallel Old GC”，它对新生代和老年代都使用多线程，启用命令如下：</p>
+<p>$ java -XX:+UseParallelOldGC<br>3、Concurrent Mark Sweep（CMS）收集器<br><img src="/../images/0014/bf9f76d6795d9567b62b47cc89d5fdf5.png"></p>
+<p>Concurrent Mark Sweep（CMS）垃圾收集器与应用程序并行运行。对于新生代和老年代都使用了多线程。在 CMS 垃圾收集器删除无用对象后，不会对存活对象进行内存压缩。该垃圾收集器和应用程序并行运行，会降低应用程序的响应时间，适用于停顿时间较短的应用程序。这个收集器在 Java8 已过时，并在 Java14 中被移除。如果你仍在使用有这个垃圾收集器的 Java 版本，可以使用如下命令启用：</p>
+<p>$ java -XX:+UseConcMarkSweepGC<br>在 CMS 垃圾收集器使用过程中，应用程序将暂停两次。首次暂停发生在标记可直接访问的存活对象时，这个暂停被称为 初始标记 。第二次暂停发生在 CMS 收集器结束时期，来修正在并发标记过程中，应用程序线程在 CMS 垃圾回收完成后更新对象时被遗漏的对象。这就是所谓的 重新标记 。</p>
+<p>4、G1 收集器<br><img src="/../images/0014/e4e18758715a50d3bc605259a99748bf.png"></p>
+<p>G1 垃圾收集器旨在替代 GMS。G1 垃圾收集器具备并行、并发以及增量压缩，且暂停时间较短。与 CMS 收集器使用的内存布局不同，G1 收集器将堆内存划分为大小相同的区域，通过多个线程触发全局标记阶段。标记阶段完成后，G1 知道哪个区域可能大部分是空的，并首选该区域作为清除&#x2F;删除阶段。</p>
+<p>在 G1 收集器中，一个对象如果大小超过半个区域容量会被认为是一个“大对象” 。这些对象被放置在老年代中，在一个被称为“humongous region”的区域中。 启用 G1 收集器的命令如下：</p>
+<p>$ java -XX:+UseG1GC<br>5、Epsilon 收集器<br>该垃圾收集器是在 Java11 中引入的，是一个 no-op （无操作）收集器。它不做任何实际的内存回收，只负责管理内存分配。Epsilon 只在当你知道应用程序的确切内存占用情况并且不需要垃圾回收时使用。启用命令如下：</p>
+<p>$ java -XX:+UnlockExperimentalVMOptions -XX:+UseEpsilonGC<br>6、Shenandoah 收集器<br>Shenandoah 是在 JDK12 中引入的，是一种 CPU 密集型垃圾收集器。它会进行内存压缩，立即删除无用对象并释放操作系统的空间。所有的这一切与应用程序线程并行发生。启用命令如下：</p>
+<p>$ java -XX:+UnlockExperimentalVMOptions -XX:+UseShenandoahGC<br>7、ZGC 收集器<br>ZGC 为低延迟需要和大量堆空间使用而设计，允许当垃圾回收器运行时 Java 应用程序继续运行。ZGC 收集器在 JDK11 引入，在 JDK12 改进。在 JDK15，ZGC 和 Shenandoah 都被移出了实验阶段。启用 ZGC 收集器使用如下命令：</p>
+<p>$ java -XX:+UnlockExperimentalVMOptions -XX:+UseZGC<br>灵活的垃圾收集器<br>Java 为我们提供了灵活的内存管理方式，熟悉不同的可用方法有助于为正在开发或运行的应用程序选择最合适的内存管理方式。<br>————————————————<br>版权声明：本文为CSDN博主「YYniannian」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/YYniannian/article/details/125974720">https://blog.csdn.net/YYniannian/article/details/125974720</a></p>
+]]></content>
+      <categories>
+        <category>JVAV</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>zookeeper安装与启动</title>
+    <url>/2022/12/20/zookeeper%E5%AE%89%E8%A3%85%E4%B8%8E%E5%90%AF%E5%8A%A8/</url>
+    <content><![CDATA[<p>1、zookeeper的下载<br>官网 <a href="https://zookeeper.apache.org/releases.html">下载地址</a><br><img src="/../images/0012/20221220152700.png"></p>
+<blockquote>
+<p> wget –no-check-certificate <a href="https://dlcdn.apache.org/zookeeper/zookeeper-3.6.3/apache-zookeeper-3.6.3-bin.tar.gz">https://dlcdn.apache.org/zookeeper/zookeeper-3.6.3/apache-zookeeper-3.6.3-bin.tar.gz</a></p>
+</blockquote>
+<p>2、解压压缩包</p>
+<blockquote>
+<p>tar -zxvf apache-zookeeper-3.6.3-bin.tar.gz -C &#x2F;usr&#x2F;local&#x2F;</p>
+</blockquote>
+<p>3、进入zookeeper的安装目录下</p>
+<ul>
+<li>创建data目录，存放我们的数据，使用以下命令<blockquote>
+<p>cd &#x2F;usr&#x2F;local&#x2F;apache-zookeeper-3.6.3-bin<br>mkdir data</p>
+</blockquote>
+</li>
+</ul>
+<p>4、进入conf目录，修改文件名称</p>
+<ul>
+<li>把zoo_sample.cfg 改名为zoo.cfg。可以复制一份，重命名为zoo.cfg（默认配置名称）<blockquote>
+<p>#进入conf目录<br>cd conf&#x2F;<br>#复制一份，名为zoo.cfg<br>cp zoo_sample.cfg zoo.cfg</p>
+</blockquote>
+</li>
+</ul>
+<p>5、修改zoo.cfg配置文件</p>
+<ul>
+<li>将dataDir修改为我们自己创建的data目录<br><img src="/../images/0012/20221220153614.png"></li>
+</ul>
+<p>6、启动测试</p>
+<ul>
+<li><p>进入zookeeper目录下的bin目录,使用命令启动zkServer.sh,后缀为sh的为linux启动，为cmd的是Windows下启动</p>
+<blockquote>
+<p>.&#x2F;zkServer.sh start</p>
+</blockquote>
+</li>
+<li><p>启动后查看服务的状态，显示如下信息则启动成功</p>
+<blockquote>
+<p>.&#x2F;zkServer.sh status<br><img src="/../images/0012/20221220153906.png"></p>
+</blockquote>
+</li>
+<li><p>停止服务</p>
+<blockquote>
+<p>.&#x2F;zkServer.sh stop<br><img src="/../images/0012/20221220154048.png"></p>
+</blockquote>
+</li>
+</ul>
+<p>7、zkui的安装<br>7.1 下载 <a href="https://github.com/DeemOpen/zkui">zkui</a></p>
+<p>7.2 编译</p>
+<blockquote>
+<p>mvn clean package  </p>
+</blockquote>
+<p>7.3 上传到服务器</p>
+<blockquote>
+<p>rz<br><img src="/../images/0013/20221229152936.png"></p>
+</blockquote>
+<p>7.4 修改配置<br><img src="/../images/0013/20221229153240.png"></p>
+<p>7.5 上传启动脚本</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/usr/bin/env bash</span><br><span class="line"></span><br><span class="line">PIDFILE=~/zkui.pid</span><br><span class="line">ZKUIBINDIR=$(cd `dirname $0`; pwd)</span><br><span class="line">ZKUICLASSNAME=&quot;target/zkui-2.0-SNAPSHOT-jar-with-dependencies.jar&quot;</span><br><span class="line">ZKUI_DAEMON_OUT=$ZKUIBINDIR/zkui.out</span><br><span class="line"></span><br><span class="line">start()&#123;</span><br><span class="line">    echo  &quot;Starting zkui ... $ZKUIBINDIR&quot;</span><br><span class="line">    if [ -f &quot;$PIDFILE&quot; ]; then</span><br><span class="line">        if kill -0 `cat &quot;$PIDFILE&quot;` &gt; /dev/null 2&gt;&amp;1; then</span><br><span class="line">            echo zkui already running as process `cat &quot;$PIDFILE&quot;`. </span><br><span class="line">            exit 0</span><br><span class="line">        fi</span><br><span class="line">    fi</span><br><span class="line">    cd $ZKUIBINDIR</span><br><span class="line">    cp config.cfg target</span><br><span class="line">    nohup java -jar &quot;$ZKUIBINDIR/$ZKUICLASSNAME&quot; &gt; &quot;$ZKUI_DAEMON_OUT&quot; 2&gt;&amp;1 &lt; /dev/null &amp;</span><br><span class="line">    if [ $? -eq 0 ];</span><br><span class="line">    then</span><br><span class="line">        echo $!&gt;$PIDFILE</span><br><span class="line">        if [ $? -eq 0 ];</span><br><span class="line">        then</span><br><span class="line">            sleep 1</span><br><span class="line">            echo STARTED</span><br><span class="line">        else</span><br><span class="line">            echo FAILED TO WRITE PID</span><br><span class="line">            exit 1</span><br><span class="line">        fi</span><br><span class="line">    else</span><br><span class="line">        echo SERVER DID NOT START</span><br><span class="line">        exit 1</span><br><span class="line">    fi</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">stop()&#123;</span><br><span class="line">    echo -n &quot;Stopping zkui ... &quot;</span><br><span class="line">    if [ ! -f &quot;$PIDFILE&quot; ]</span><br><span class="line">    then</span><br><span class="line">        echo &quot;no zkui to stop (could not find file $PIDFILE)&quot;</span><br><span class="line">    else</span><br><span class="line">        kill -9 $(cat &quot;$PIDFILE&quot;)</span><br><span class="line">        rm &quot;$PIDFILE&quot;</span><br><span class="line">        echo STOPPED</span><br><span class="line">    fi</span><br><span class="line">    exit 0</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">case &quot;$1&quot; in</span><br><span class="line">start)</span><br><span class="line">    start</span><br><span class="line">    ;;</span><br><span class="line">stop)</span><br><span class="line">    stop</span><br><span class="line">    ;;</span><br><span class="line">restart)</span><br><span class="line">    shift</span><br><span class="line">    &quot;$0&quot; stop</span><br><span class="line">    sleep 3</span><br><span class="line">    &quot;$0&quot; start</span><br><span class="line">    ;;</span><br><span class="line">*)</span><br><span class="line">    echo &quot;Usage: $0 &#123;start|stop|restart&#125;&quot; &gt;&amp;2</span><br><span class="line">esac</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Linux</category>
+      </categories>
   </entry>
 </search>
